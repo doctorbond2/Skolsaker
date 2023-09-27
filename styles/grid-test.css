@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  height: 700px;
+  width: 800px;
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+
+}
+main {
+  position: relative;
+}
+.box1 {
+  border: 2px solid black;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-image: contain;
+  max-width: 100%;
+  max-height: 100%;
+  gap: 10px;
+}
+.box1 img{
+  border: 2px solid black;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.desktop-footer {
+  width: 1190px;
+  height: 74px;
+  border-top: 1px solid lightgrey;
+  position: fixed;
+  bottom: 0;
+}
