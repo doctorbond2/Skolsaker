@@ -23,13 +23,10 @@ function whatToPay(dayParam, timeParam, salaryParam) {
     hourlyPay: salaryParam.value
   }
 
-  if (wp.day === 'Saturday' || 'Sunday') {
-    wp.hourlyPay = wp.hourlyPay*2;
+  if (wp.day === 'Saturday' || wp.day === 'Sunday') {
+    wp.hourlyPay = wp.hourlyPay*1.5;
   }
-
-  console.log(wp.time);
-
-    
+  
     recieverText = document.createTextNode(`On a ${wp.day} you will be paid $${wp.hourlyPay * (wp.time[0])} for ${wp.time[0]} hours of work.`);
 
     const newText = document.createElement('p');
