@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 7</title>
+</head>
+<body>
+
+  <script>
+    const library = [ 
+   {
+       author: 'Bill Gates',
+       title: 'The Road Ahead',
+       readingStatus: true
+   },
+   {
+       author: 'Steve Jobs',
+       title: 'Walter Isaacson',
+       readingStatus: true
+   },
+   {
+       author: 'Suzanne Collins',
+       title:  'Mockingjay: The Final Book of The Hunger Games', 
+       readingStatus: false
+   }
+  ];
+
+
+  function bookSorter(array) {
+    
+    let readBooks = array.filter((value,index) => {
+      return value.readingStatus === true;
+    });
+    
+    const sortReadBooks = readBooks.map((value)=> {
+        return value.title;
+      });
+
+    let toRead = array.filter((value,index) => {
+      return value.readingStatus === false;
+    });
+
+    const sortToRead = toRead.map(function(value) {
+      return value.title;
+    });
+
+    console.log(sortReadBooks);
+    console.log(sortToRead);
+  }
+
+  bookSorter(library);
+
+
+
+  </script>
+
+  
+</body>
+</html>

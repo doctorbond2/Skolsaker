@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3</title>
+</head>
+<body>
+  <script>
+
+    getDayinMonth('January');
+
+    function getDayinMonth(month){
+
+      let monthDays = '';
+
+      switch(month) {
+        
+        case 'January':
+        monthDays = 31;
+        break;
+
+        case 'February':
+        monthDays = 28;
+        break;
+
+        case 'March':
+        monthDays = 31;
+        break;
+
+        case 'April':
+        monthDays = 30;
+        break;
+
+        case 'May':
+        monthDays = 31;
+        break;
+
+        case 'June':
+        monthDays = 30;
+        break;
+
+        case 'July':
+        monthDays = 31;
+        break;
+
+        case 'August':
+        monthDays = 31;
+        break;
+        
+        case 'September':
+        monthDays = 30;
+        break;
+
+        case 'October':
+        monthDays = 31;
+        break;
+
+        case 'November':
+        monthDays = 30;
+        break;
+
+        case 'December':
+        monthDays = 31;
+        break;
+      }
+      return console.log(monthDays);
+    }
+  </script>
+  
+</body>
+</html>
