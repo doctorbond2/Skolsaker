@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 9</title>
+</head>
+<body>
+  <script>
+    const programming = {
+      languages: ["JavaScript", "Python", "Ruby"],
+      isChallenging: true,
+      isRewarding: true,
+      difficulty: 8,
+      jokes: [
+        "https://www.devtopics.com/best-programming-jokes/",
+        "https://www.hongkiat.com/blog/programming-jokes/",
+      ]
+    };
+
+    function getLanguageAtIndex(programming, index) {
+      return programming.languages[index-1];
+    }
+
+    console.log(getLanguageAtIndex(programming,1));
+  </script>
+  
+</body>
+</html>
