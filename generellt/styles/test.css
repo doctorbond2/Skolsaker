@@ -31,6 +31,10 @@ input, select{
   color: white;
 }
 
+.submitButton:active {
+  border: 1px solid white;
+}
+
 .form-reciever {
   width: 80%;
   height: 4em;

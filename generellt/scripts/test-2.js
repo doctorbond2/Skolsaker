@@ -15,6 +15,7 @@ submitButton.addEventListener('click', (event) => {
 });
 
 console.log(generateOptions(time1Element));
+
 generateOptions(time2Element);
 generateWeekdays(dayElement);
 
@@ -24,11 +25,10 @@ function generateWeekdays(targetElement) {
     const option = new Option(value);
     targetElement.appendChild(option);
   });
-  
 }
 
 
-function generateOptions(targetElement,) {
+function generateOptions(targetElement) {
   
   for (let hour = 7; hour <= 20; hour++) {
     
