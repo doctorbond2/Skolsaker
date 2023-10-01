@@ -25,3 +25,21 @@ function greeting(name,greeting) {
 }
 
 greeting('Ygritte', 'Hejsan');
+
+function taskFour(word) {
+
+  
+  const caps = word.toUpperCase();
+  console.log(caps);
+}
+
+taskFour('hello');
+
+function taskFive(h,b,w) {
+  const cube = h*b*w;
+
+  cube.map(value => value * 2)  
+  
+  
+}
+taskFive(3,2,4);

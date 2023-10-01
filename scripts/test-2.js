@@ -26,6 +26,7 @@ function generateOptions(targetElement) {
       targetElement.appendChild(option);
     }
   }
+  
 }
 
 
