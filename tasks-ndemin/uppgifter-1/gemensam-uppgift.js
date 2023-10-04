@@ -1,3 +1,4 @@
+
 const images = [
   {
   "description": "This is awesome 😉. Ut tempus dolor quis nibh maximus vehicula. Phasellus et varius mi, quis tempor sem. Integer posuere ligula vel lectus cursus hendrerit. Vivamus lacinia interdum ipsum at luctus. Duis et sagittis quam, id mattis lorem. Nunc eget elit tempus, rhoncus arcu eu, cursus ex. Phasellus vitae nibh vitae nisl placerat rhoncus et sit amet orci. Sed euismod ante purus. Aenean neque sem, malesuada a felis at, mattis sagittis risus. Etiam volutpat nibh sapien, a consectetur neque iaculis id. Nullam faucibus rutrum aliquet. Curabitur eget augue metus. Vivamus molestie elit at sapien auctor, eget convallis massa semper. Praesent sem nibh, egestas eu laoreet sed, egestas eu augue.",
@@ -70,3 +71,37 @@ const images = [
   "title": "Mapping out our customer journey"
   }
   ];
+
+  const mainElement = document.createElement('main');
+  document.body.appendChild(mainElement);
+
+
+  function renderImageList(array) {
+
+    array.forEach((value,index)=> {
+
+      const container = document.createElement('div');
+      container.className = `box js-box`;
+      container.id = `cell-${index+1}`;
+
+      const imageText = document.createElement('p');
+      imageText.className = `image-paragraph`;
+      imageText.id = `${value.id}`;
+      imageText.textContent = `${value.title}`;
+
+      const imageElement = document.createElement('img');
+      imageElement.id = `image-${index+1}`;
+      imageElement.className = `main-image js-image`;
+      imageElement.title = `${value.title}`;
+      imageElement.alt = `${value.description}`;
+      imageElement.setAttribute('src', `${value.imageURL}`);
+      console.log(imageElement);
+
+
+
+      container.appendChild(imageElement);
+      container.appendChild(imageText); 
+      mainElement.appendChild(container);
+    })
+  }
+  renderImageList(images);
