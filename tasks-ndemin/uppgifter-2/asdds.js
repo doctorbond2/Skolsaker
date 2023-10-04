@@ -283,19 +283,55 @@ function renderNews(n) {
     pageWrap.appendChild(article);
   }
 
-  n.forEach((value,index) => {
 
+
+  n.forEach((value,index) => {
+    
     const article = document.getElementById(`article${index+1}`)
     const 
-      {author, content, title, id, publishedAt, description, url, source, } 
+      {author, content, title, id, publishedAt, description, url, source, urlToImage} 
        = value;
 
+    article.id = id;
+  
     const articleTitle = document.createElement('h2');
-    articleTitle.innerText = 'Title!';
+    articleTitle.innerText = title;
     article.appendChild(articleTitle);
-       
-    const paragraph = document.createElement('p');
-    paragraph.setAttribute('alt','screen');
+
+    const imageElement = document.createElement('img');
+    imageElement.setAttribute('src', urlToImage);
+    imageElement.setAttribute('alt', 'image-content');
+    imageElement.className = 'image-layout';
+    imageElement.id = `image-${index+1}`;
+    article.appendChild(imageElement);
+    imageElement.addEventListener('error', () => {
+      imageElement.style.display = 'none';
+    });
+
+    const brodtext = document.createElement('p');
+    brodtext.innerText = description;
+    article.appendChild(brodtext);
+
+    const authorBottom = document.createElement('h4');
+
+    if (author === undefined) {
+      authorBottom.innerText = 'Vem vet';
+    } else {
+      authorBottom.innerText = `Av: ${author}`;
+    }
+
+    article.appendChild(authorBottom);
+
+    const kella = document.createElement('a');
+    kella.innerText = `Källa: ${value.source.name}`;
+    article.appendChild(kella);
+
+    const siteLink = document.createElement('a');
+    siteLink.innerText = 'Till artikel';
+    siteLink.setAttribute('href', url);
+    siteLink.setAttribute('target', '_blank');
+    article.appendChild(siteLink);
+
   });
 
 }
