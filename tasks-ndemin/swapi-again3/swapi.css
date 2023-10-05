@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.character-display {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+}
+.character-display div {
+  border: 1px solid black;
+}
+
+.char-box {
+  width: 15rem;
+  height: 20rem;
+  background-color: beige;
+}
+
+button {
+  background-color: black;
+  color: green;
+  width: 2em;
+  height: 2em;
+  padding: 3rem;
+}
+
+.fetchy {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: large;
+  font-weight: bold;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: 50%;
+  margin-top: 20%;
+}/*# sourceMappingURL=swapi.css.map */

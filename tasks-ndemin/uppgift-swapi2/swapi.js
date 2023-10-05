@@ -1,28 +1,27 @@
 const fetchButton = document.querySelector('.fetchButton');
+const nextButton = document.querySelector('.nextButton');
+const NEXT_URL = 'NextURL'
 
 fetchButton.addEventListener('click', async () => {
+
   const starWarsApi = await fetchStarWars('https://swapi.dev/api/people')
   .catch((error) => {
     console.log('error-check AGAIN');
   });
 
-
-  console.log(starWarsApi.next);
-
-  if (starWarsApi.next !== undefined || starWarsApi.next !== null) {
-    
-    const newButton = document.createElement('button');
-    newButton.innerText = 'next page';
-    newButton.addEventListener('click', async () => {
-      await fetchStarWars(starWarsApi.next);
-    })
-    document.body.appendChild(newButton);
+  if (starWarsApi !== undefined || starWarsApi !== null) {
+   localStorage.removeItem(NEXT_URL);
+   localStorage.setItem(NEXT_URL, starWarsApi.next);
   }
-
-
 });
 
+nextButton.addEventListener('click', async () => {
+  const nextPage = await fetchStarWars(localStorage.getItem(NEXT_URL));
+  localStorage.setItem(NEXT_URL, nextPage.next);
+})
+
 async function fetchStarWars(api) {
+
   const response = await fetch(api);
 
   if (!response.ok) {
@@ -35,8 +34,16 @@ async function fetchStarWars(api) {
   const responseJson = await response.json();
 
   console.log(responseJson);
+
   return responseJson;
 }
 
+async function fetchNextPage(url) {
 
+  if (url !== undefined || url !== null) {
+    
+    console.log(url);
+    
+  }
+}
 

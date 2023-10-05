@@ -8,7 +8,6 @@ document.getElementById('fetchCharacter').addEventListener('click', () => {
 
 async function fetchAPI(api) {
 
- 
     const fetchResults = await fetch(api);
     const data = await fetchResults.json();
   
