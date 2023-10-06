@@ -1,16 +1,24 @@
 
 
 async function fetchAPI(url) {
+  try {
+    const response = await fetch(url);
   
-  const response = await fetch(url);
-  
-  const json = await response.json();
-
-  return json;
+    const json = await response.json();
+    
+    console.log(json);
+    return json;
+  }
+  catch(error) {
+    console.error(error,'error');
+  }
+ 
 }
 
-fetchAPI('jazon.json')
-.then((response) => {
-  const newsss = JSON.parse(response);
-  console.log(newsss);
-});
+
+
+function produce() {
+  fetchAPI('jazon.json');
+  
+
+}

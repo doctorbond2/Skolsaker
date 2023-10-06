@@ -1,0 +1,1 @@
+När du sätter this.någonting äre som att du sätter in en property i ett objekt
