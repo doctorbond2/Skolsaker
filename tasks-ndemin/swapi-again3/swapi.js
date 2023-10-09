@@ -41,7 +41,6 @@ async function fetchStarWars(url) {
   catch (error){
     console.log('errorfetching', error);
   }
-
 }
 
 function renderCharacterData(data) {

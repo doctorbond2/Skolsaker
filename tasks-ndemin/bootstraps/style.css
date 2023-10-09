@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form-group {
+  max-width: 20vw;
+  margin-left: 25%;
+}/*# sourceMappingURL=style.css.map */
