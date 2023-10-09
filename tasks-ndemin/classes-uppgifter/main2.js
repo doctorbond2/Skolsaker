@@ -1,6 +1,5 @@
 class Customer {
 
-
   constructor(discount) {
     this.payments = [];
     this.transactionDiscount = discount;
@@ -41,12 +40,15 @@ class Customer {
   isEligableForDiscount() { 
     
     const x = this.payments;
+    //testar bara att använda en this.variablel i en vanlig variabel >> x 
     let discount = '';
     let total = 0;
-    
-    for (let i = 0; i < x.length; i++) {
-      total += x[i];
-    }
+   
+    x.forEach((value) => {
+      console.log('x' + value);
+      total += value;
+      console.log('x' + total);
+    });
 
     if (total >= this.transactionDiscount) {
       discount = true;x
@@ -76,3 +78,5 @@ customer_2.addTransaction(2000);
 
 
 customer_2.isEligableForDiscount();
+
+export default Customer;

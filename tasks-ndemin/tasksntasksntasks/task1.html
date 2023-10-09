@@ -9,7 +9,7 @@
 <body>
   <script>
 
-    const testArray = [4,7,22,51,1143]
+    const testArray = ['x',7,22,51,1143]
 
     function firstValue(x) {
       return x[0];
@@ -17,7 +17,42 @@
 
     console.log(firstValue(testArray));
 
+
+
     
+
+    function betterThanAverage(classPoints, yourPoints) {
+    
+    const classScore = classPoints.reduce((x,y) => {
+        console.log(x+y);
+        return x + y;
+    },0);
+
+    console.log(classScore);
+    
+    return yourPoints > classPoints;
+  }
+
+    betterThanAverage([2,3], 5);
+
+    function getGrade (s1, s2, s3) {
+  const score = (s1+s2+s3)/3;
+  
+  if (90 <= score && score <= 100) 
+    return 'A';
+  else if (80 <= score && score < 90)
+    return 'B';
+  else if (70 <= score && score < 80)
+    return 'C'
+  else if (60 <= score && score < 70)
+    return 'D';
+  else 
+    return 'F';
+  
+  }
+
+  console.log(getGrade(24,25,25));  
+  
 
   </script>
 </body>

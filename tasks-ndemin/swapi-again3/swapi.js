@@ -8,6 +8,7 @@ console.log(fetchy);
 
 fetchButton.addEventListener('click', async () => {
 
+
   fetchy.innerHTML = 'Fetching...';
 
   await fetchStarWars(STARWARS_API)
@@ -23,18 +24,23 @@ fetchButton.addEventListener('click', async () => {
 
 async function fetchStarWars(url) {
 
-  const response = await fetch(url)
-  if(!response.ok) {
-    if(response.status === 404) {
-      console.error('error 404');
-    } else {
-      console.error('error unknown');
+  try {
+    const response = await fetch(url)
+    if(!response.ok) {
+      if(response.status === 404) {
+        console.error('error 404');
+      } else {
+        console.error('error unknown');
+      }
+  
     }
-
+    const responseJson = await response.json();
+    console.log(responseJson);
+    return responseJson;
   }
-  const responseJson = await response.json();
-  console.log(responseJson);
-  return responseJson;
+  catch (error){
+    console.log('errorfetching', error);
+  }
 
 }
 
@@ -42,10 +48,12 @@ function renderCharacterData(data) {
 
   const characterList = data.results;
 
-  characterList.forEach((v,i) => {
+  characterList.forEach((value,index) => {
+    
     const charBox = document.createElement('div');
     charBox.className = 'char-box';
     charDisplay.appendChild(charBox);
+
   });
   
 
