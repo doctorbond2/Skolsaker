@@ -3,14 +3,39 @@ class Todolist {
     this.todoList = [];
   }
   startUp() {
-    const inputTodo = document.createElement("input");
-    inputTodo.id = "input-todo";
-    document.body.appendChild(inputTodo);
+    const todoForm = document.createElement("form");
+    todoForm.id = "todoForm";
+    document.body.appendChild(todoForm);
+
+    const firstName = document.createElement("input");
+    firstName.id = "input-todo-firstname";
+    firstName.setAttribute("placeholder", "Firstname");
+    todoForm.appendChild(firstName);
+    let break1 = document.createElement("br");
+    todoForm.appendChild(break1);
+
+    const lastName = document.createElement("input");
+    lastName.id = "input-todo-firstname";
+    lastName.setAttribute("placeholder", "Lastname");
+    lastName.type = "text";
+    todoForm.appendChild(lastName);
+    let break2 = document.createElement("br");
+    todoForm.appendChild(break2);
+
+    const todoDate = document.createElement("input");
+    todoDate.id = "input-date";
+    todoDate.setAttribute("type", "date");
+    todoForm.appendChild(todoDate);
+
+    const todoTime = document.createElement("input");
+    todoTime.id = "input-time";
+    todoTime.setAttribute("type", "time");
+    todoForm.appendChild(todoTime);
 
     const inputAddButton = document.createElement("button");
     inputAddButton.innerText = "Add todo";
     inputAddButton.id = "inputbutton";
-    document.body.appendChild(inputAddButton);
+    todoForm.appendChild(inputAddButton);
 
     const todoListBox = document.createElement("ul");
     todoListBox.setAttribute(
@@ -34,6 +59,9 @@ class Todolist {
       console.log(d);
     }
   }
+  renderList() {}
+
+  addTodo() {}
 }
 
 //kör all kod här nere :)
