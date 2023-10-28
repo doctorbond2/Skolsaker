@@ -3,6 +3,15 @@ class Todolist {
     this.todoList = [];
   }
   startUp() {
+    const addTodoButton = document.createElement("button");
+    addTodoButton.innerText = "Add todo!";
+    addTodoButton.id = "add-todo-button";
+    document.body.appendChild(addTodoButton);
+
+    const formModal = document.createElement("dialog");
+    formModal.id = "modal-dialog";
+    document.body.appendChild(formModal);
+
     const todoForm = document.createElement("form");
     todoForm.id = "todoForm";
     todoForm.disabled = "disabled";
@@ -10,7 +19,8 @@ class Todolist {
       "style",
       "display: flex; flex-direction: column; width: 20vw;"
     );
-    document.body.appendChild(todoForm);
+
+    formModal.appendChild(todoForm);
 
     const firstName = document.createElement("input");
     firstName.id = "input-todo-firstname";
@@ -75,21 +85,39 @@ class Todolist {
 
     document.querySelectorAll(".xyz");
     document.body.appendChild(todoListBox);
-    this.eventListeners(inputAddButton);
+    this.eventListeners(0, 0, addTodoButton, inputAddButton);
   }
 
-  eventListeners(a, d) {
+  eventListeners(a, b, c, d) {
     if (a) {
-      a.addEventListener("click", () => {
-        this.addTodo();
+      console.log("asd");
+    }
+    if (b) {
+      console.log("bb");
+      b.addEventListener("click", () => {
+        let x = b.id.split("-")[2];
+        this.todoList.splice(b.id - 1, 1);
+        this.renderList();
       });
-    } else if (d) {
-      // console.log("check");
-      // console.log(d);
+    }
+    if (c) {
+      c.addEventListener("click", () => {
+        const modal = document.querySelector("#modal-dialog");
+        modal.showModal();
+      });
+    }
+    if (d) {
+      d.addEventListener("click", () => {
+        const modal = document.querySelector("#modal-dialog");
+        this.addTodo();
+        modal.close();
+      });
     }
   }
   renderList() {
-    this.todoList.forEach((x) => {
+    const todoListBox = document.querySelector("#todo-list-box");
+    todoListBox.innerHTML = "";
+    this.todoList.forEach((x, i) => {
       const card = document.createElement("ul");
       card.style.backgroundColor = "red";
       Object.values(x).forEach((y, i) => {
@@ -97,8 +125,12 @@ class Todolist {
         item.innerHTML = y;
         card.appendChild(item);
       });
-      document.querySelector("#todo-list-box").appendChild(card);
-      this.eventListeners(0, "delete");
+      const deleteButton = document.createElement("button");
+      deleteButton.innerHTML = "Remove";
+      deleteButton.id = `delete-button-${i + 1}`;
+      card.appendChild(deleteButton);
+      todoListBox.appendChild(card);
+      this.eventListeners(0, deleteButton);
     });
   }
 
