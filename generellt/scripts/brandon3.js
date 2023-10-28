@@ -120,7 +120,7 @@ class Todolist {
     this.renderList();
   }
   formControl() {
-    const form = document.querySelectorAll(".xyz");
+    //ska bli egen klass? name :Control?
   }
 }
 
