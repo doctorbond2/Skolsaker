@@ -3,8 +3,9 @@ class Todolist {
     this.todoList = [];
   }
   startUp() {
-    const todoForm = document.createElement("div");
+    const todoForm = document.createElement("form");
     todoForm.id = "todoForm";
+    todoForm.disabled = "disabled";
     todoForm.setAttribute(
       "style",
       "display: flex; flex-direction: column; width: 20vw;"
@@ -16,7 +17,6 @@ class Todolist {
     firstName.setAttribute("placeholder", "Firstname");
     firstName.type = "text";
     todoForm.appendChild(firstName);
-    firstName.classList.add("xyz");
 
     let break1 = document.createElement("br");
     todoForm.appendChild(break1);
@@ -29,47 +29,49 @@ class Todolist {
     todoForm.appendChild(lastName);
     let break2 = document.createElement("br");
     todoForm.appendChild(break2);
-    lastName.classList.add("xyz");
 
     const todoTask = document.createElement("input");
     todoTask.id = "todo-task";
     todoTask.type = "text";
     todoTask.setAttribute("placeholder", "Task?");
     todoTask.setAttribute("style", "height: 50px;");
-    todoTask.classList.add("xyz");
     todoForm.appendChild(todoTask);
 
     const dateAndTime = document.createElement("div");
-    dateAndTime.id = "input-date";
+    dateAndTime.id = "input-date-and-time";
     dateAndTime.setAttribute("style", "height: 30px;");
     todoForm.appendChild(dateAndTime);
-    dateAndTime.classList.add("xyz");
 
     const todoTime = document.createElement("input");
     todoTime.id = "input-time";
     todoTime.setAttribute("type", "time");
     todoTime.setAttribute("style", "width: 50%; height: 100%;");
     dateAndTime.appendChild(todoTime);
-    todoTime.classList.add("xyz");
 
     const todoDate = document.createElement("input");
     todoDate.id = "input-date";
     todoDate.setAttribute("type", "date");
     todoDate.setAttribute("style", "width: 50%; height: 100%;");
     dateAndTime.appendChild(todoDate);
-    dateAndTime.classList.add("xyz");
 
-    const inputAddButton = document.createElement("button");
+    const inputAddButton = document.createElement("input");
+    inputAddButton.type = "submit";
     inputAddButton.innerText = "Add todo";
     inputAddButton.id = "inputbutton";
     todoForm.appendChild(inputAddButton);
 
-    const todoListBox = document.createElement("ul");
+    const todoListBox = document.createElement("div");
     todoListBox.id = "todo-list-box";
     todoListBox.setAttribute(
       "style",
       "width: 30vw; height: 40vh; background-color: gray;"
     );
+    const all = document.querySelectorAll("input");
+    all.forEach((x) => {
+      x.classList.add("xyz");
+      x.required = "true";
+    });
+    inputAddButton.classList.remove("xyz");
 
     document.querySelectorAll(".xyz");
     document.body.appendChild(todoListBox);
@@ -82,24 +84,43 @@ class Todolist {
         this.addTodo();
       });
     } else if (d) {
-      console.log("check");
-      console.log(d);
+      // console.log("check");
+      // console.log(d);
     }
   }
   renderList() {
-    const box = document.querySelector("#todo-list-box");
+    this.todoList.forEach((x) => {
+      const card = document.createElement("ul");
+      card.style.backgroundColor = "red";
+      Object.values(x).forEach((y, i) => {
+        const item = document.createElement("li");
+        item.innerHTML = y;
+        card.appendChild(item);
+      });
+      document.querySelector("#todo-list-box").appendChild(card);
+      this.eventListeners(0, "delete");
+    });
   }
 
   addTodo() {
     const todo = {};
     const form = document.querySelectorAll(".xyz");
+    for (let i = 0; i < form.length; i++) {
+      if (!form[i].value) {
+        return alert("All fields need to be filled");
+      }
+    }
     form.forEach((x) => {
-      const listName = x.id.split("-");
-      todo[`${listName[listName.length - 1]}`] = x.value;
+      const tag = x.id.split("-");
+      todo[`${tag[tag.length - 1]}`] = x.value;
       x.value = "";
     });
     this.todoList.push(todo);
     console.log(this.todoList);
+    this.renderList();
+  }
+  formControl() {
+    const form = document.querySelectorAll(".xyz");
   }
 }
 
