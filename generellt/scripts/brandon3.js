@@ -87,9 +87,63 @@ class Todolist {
     this.eventListeners(0, 0, addTodoButton, inputAddButton);
   }
 
+  renderList() {
+    const todoListBox = document.querySelector("#todo-list-box");
+    todoListBox.innerHTML = "";
+    this.todoList.forEach((x, i) => {
+      const container = document.createElement("div");
+      container.innerText = "look here";
+      container.setAttribute(
+        "style",
+        "width: 20vw; height: 20vh; background-color: red; border: 4px solid black;"
+      );
+      container.id = `c-${i + 1}`;
+
+      todoListBox.appendChild(container);
+      const card = document.createElement("a");
+      card.setAttribute(
+        "style",
+        "display: block; width: 100%; background-color: black; height: 100%;"
+      );
+      this.eventListeners(card);
+      Object.values(x).forEach((y, i) => {
+        const item = document.createElement("p");
+        item.innerHTML = y;
+        card.appendChild(item);
+      });
+      const deleteButton = document.createElement("button");
+      deleteButton.innerHTML = "Remove";
+      deleteButton.id = `delete-button-${i + 1}`;
+      card.appendChild(deleteButton);
+      container.appendChild(card);
+      this.eventListeners(0, deleteButton);
+    });
+  }
+
+  addTodo() {
+    const todo = {};
+    const form = document.querySelectorAll(".xyz");
+    for (let i = 0; i < form.length; i++) {
+      // if (!form[i].value) {
+      //   return alert("All fields need to be filled");
+      // }
+    }
+    form.forEach((x) => {
+      const tag = x.id.split("-");
+      todo[`${tag[tag.length - 1]}`] = x.value;
+      x.value = "";
+    });
+    this.todoList.push(todo);
+    console.log(this.todoList);
+    localStorage.setItem("todolist", JSON.stringify(this.todoList));
+    this.renderList();
+  }
   eventListeners(a, b, c, d) {
     if (a) {
-      console.log("asd");
+      a.addEventListener("click", () => {
+        const modal = document.querySelector("#modal-dialog");
+        modal.showModal();
+      });
     }
     if (b) {
       console.log("bb");
@@ -113,52 +167,6 @@ class Todolist {
         modal.close();
       });
     }
-  }
-  renderList() {
-    const todoListBox = document.querySelector("#todo-list-box");
-    todoListBox.innerHTML = "";
-    this.todoList.forEach((x, i) => {
-      const container = document.createElement("div");
-      container.innerText = "look here";
-      container.setAttribute(
-        "style",
-        "width: 20vw; height: 20vh; background-color: red; border: 4px solid black;"
-      );
-      container.id = `c-${i + 1}`;
-      // this.eventListeners(container);
-      todoListBox.appendChild(container);
-      const card = document.createElement("a");
-      Object.values(x).forEach((y, i) => {
-        const item = document.createElement("p");
-        item.innerHTML = y;
-        card.appendChild(item);
-      });
-      const deleteButton = document.createElement("button");
-      deleteButton.innerHTML = "Remove";
-      deleteButton.id = `delete-button-${i + 1}`;
-      card.appendChild(deleteButton);
-      container.appendChild(card);
-      this.eventListeners(0, deleteButton);
-    });
-  }
-
-  addTodo() {
-    const todo = {};
-    const form = document.querySelectorAll(".xyz");
-    for (let i = 0; i < form.length; i++) {
-      if (!form[i].value) {
-        return alert("All fields need to be filled");
-      }
-    }
-    form.forEach((x) => {
-      const tag = x.id.split("-");
-      todo[`${tag[tag.length - 1]}`] = x.value;
-      x.value = "";
-    });
-    this.todoList.push(todo);
-    console.log(this.todoList);
-    localStorage.setItem("todolist", JSON.stringify(this.todoList));
-    this.renderList();
   }
   formControl() {
     //ska bli egen klass? name :Control?
