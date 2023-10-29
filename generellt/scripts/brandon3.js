@@ -1,6 +1,6 @@
 class Todolist {
   constructor() {
-    this.todoList = [];
+    this.todoList = JSON.parse(localStorage.getItem("todolist")) || [];
   }
   startUp() {
     const addTodoButton = document.createElement("button");
@@ -19,7 +19,6 @@ class Todolist {
       "style",
       "display: flex; flex-direction: column; width: 20vw;"
     );
-
     formModal.appendChild(todoForm);
 
     const firstName = document.createElement("input");
@@ -28,8 +27,8 @@ class Todolist {
     firstName.type = "text";
     todoForm.appendChild(firstName);
 
-    let break1 = document.createElement("br");
-    todoForm.appendChild(break1);
+    // let break1 = document.createElement("br");
+    // todoForm.appendChild(break1);
 
     const lastName = document.createElement("input");
     lastName.id = "input-todo-lastname";
@@ -37,8 +36,8 @@ class Todolist {
 
     lastName.type = "text";
     todoForm.appendChild(lastName);
-    let break2 = document.createElement("br");
-    todoForm.appendChild(break2);
+    // let break2 = document.createElement("br");
+    // todoForm.appendChild(break2);
 
     const todoTask = document.createElement("input");
     todoTask.id = "todo-task";
@@ -74,7 +73,7 @@ class Todolist {
     todoListBox.id = "todo-list-box";
     todoListBox.setAttribute(
       "style",
-      "width: 30vw; height: 40vh; background-color: gray;"
+      "width: 100vw; height: 40vh; background-color: gray;"
     );
     const all = document.querySelectorAll("input");
     all.forEach((x) => {
@@ -97,6 +96,7 @@ class Todolist {
       b.addEventListener("click", () => {
         let x = b.id.split("-")[2];
         this.todoList.splice(b.id - 1, 1);
+        localStorage.setItem("todolist", JSON.stringify(this.todoList));
         this.renderList();
       });
     }
@@ -118,10 +118,18 @@ class Todolist {
     const todoListBox = document.querySelector("#todo-list-box");
     todoListBox.innerHTML = "";
     this.todoList.forEach((x, i) => {
-      const card = document.createElement("ul");
-      card.style.backgroundColor = "red";
+      const container = document.createElement("div");
+      container.innerText = "look here";
+      container.setAttribute(
+        "style",
+        "width: 20vw; height: 20vh; background-color: red; border: 4px solid black;"
+      );
+      container.id = `c-${i + 1}`;
+      // this.eventListeners(container);
+      todoListBox.appendChild(container);
+      const card = document.createElement("a");
       Object.values(x).forEach((y, i) => {
-        const item = document.createElement("li");
+        const item = document.createElement("p");
         item.innerHTML = y;
         card.appendChild(item);
       });
@@ -129,7 +137,7 @@ class Todolist {
       deleteButton.innerHTML = "Remove";
       deleteButton.id = `delete-button-${i + 1}`;
       card.appendChild(deleteButton);
-      todoListBox.appendChild(card);
+      container.appendChild(card);
       this.eventListeners(0, deleteButton);
     });
   }
@@ -149,6 +157,7 @@ class Todolist {
     });
     this.todoList.push(todo);
     console.log(this.todoList);
+    localStorage.setItem("todolist", JSON.stringify(this.todoList));
     this.renderList();
   }
   formControl() {
