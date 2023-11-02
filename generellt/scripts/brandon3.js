@@ -91,42 +91,39 @@ class Todolist {
     const todoListBox = document.querySelector("#todo-list-box");
     todoListBox.innerHTML = "";
     this.todoList.forEach((x, i) => {
-      const container = document.createElement("div");
-      container.innerText = "look here";
-      container.setAttribute(
-        "style",
-        "width: 20vw; height: 20vh; background-color: red; border: 4px solid black;"
-      );
-      container.id = `c-${i + 1}`;
-
-      todoListBox.appendChild(container);
       const card = document.createElement("a");
       card.setAttribute(
         "style",
-        "display: block; width: 100%; background-color: black; height: 100%;"
+        "width: 20vw; height: 20vh; background-color: red; border: 4px solid black; display: block; position: relative;"
       );
+      card.id = `c-${i + 1}`;
+      todoListBox.appendChild(card);
       this.eventListeners(card);
+      this.generateContent(x);
+      const container = document.createElement("div");
+      container.setAttribute("style", "width: 100%; height: 100%;");
       Object.values(x).forEach((y, i) => {
         const item = document.createElement("p");
         item.innerHTML = y;
-        card.appendChild(item);
+        container.appendChild(item);
       });
       const deleteButton = document.createElement("button");
-      deleteButton.innerHTML = "Remove";
+      deleteButton.innerHTML = "X";
+      deleteButton.setAttribute("style", "position: absolute; right:0; top:0;");
       deleteButton.id = `delete-button-${i + 1}`;
       card.appendChild(deleteButton);
-      container.appendChild(card);
+      card.appendChild(container);
       this.eventListeners(0, deleteButton);
     });
   }
-
+  generateContent(p) {}
   addTodo() {
     const todo = {};
     const form = document.querySelectorAll(".xyz");
     for (let i = 0; i < form.length; i++) {
-      // if (!form[i].value) {
-      //   return alert("All fields need to be filled");
-      // }
+      if (!form[i].value) {
+        return alert("All fields need to be filled");
+      }
     }
     form.forEach((x) => {
       const tag = x.id.split("-");

@@ -1,0 +1,144 @@
+{
+  "ShopItems": [
+    {
+      "name": "Classic Trench Coat",
+      "type": "Coats",
+      "color": "Beige",
+      "brand": "FashionIcon",
+      "price": 899.99
+    },
+    {
+      "name": "Sporty Running Shoes",
+      "type": "Shoes",
+      "color": "Black",
+      "brand": "RunFlex",
+      "price": 109.5
+    },
+    {
+      "name": "Formal Slim-Fit Suit",
+      "type": "Suits",
+      "color": "Navy Blue",
+      "brand": "ElegantWear",
+      "price": 599.99
+    },
+    {
+      "name": "Retro Striped T-Shirt",
+      "type": "T-Shirts",
+      "color": "Red-White",
+      "brand": "RetroStyle",
+      "price": 29.99
+    },
+    {
+      "name": "Chic Leather Bag",
+      "type": "Bags",
+      "color": "Brown",
+      "brand": "LeatherCraft",
+      "price": 199.5
+    },
+    {
+      "name": "Fashionable Fedora Hat",
+      "type": "Hats",
+      "color": "Black",
+      "brand": "StyleSense",
+      "price": 39.5
+    },
+    {
+      "name": "Vintage Denim Jacket",
+      "type": "Jackets",
+      "color": "Blue",
+      "brand": "DenimCo",
+      "price": 129.99
+    },
+    {
+      "name": "Stylish Round Sunglasses",
+      "type": "Accessories",
+      "color": "Black",
+      "brand": "EyeTrends",
+      "price": 59.99
+    },
+    {
+      "name": "Comfortable Yoga Pants",
+      "type": "Leggings",
+      "color": "Gray",
+      "brand": "ActiveLife",
+      "price": 44.5
+    },
+    {
+      "name": "Plaid Wool Scarf",
+      "type": "Scarves",
+      "color": "Red-Black",
+      "brand": "WarmWear",
+      "price": 24.99
+    },
+    {
+      "name": "Casual Canvas Backpack",
+      "type": "Bags",
+      "color": "Green",
+      "brand": "Outdoorsy",
+      "price": 69.99
+    },
+    {
+      "name": "Slim-Fit Plaid Shirt",
+      "type": "Shirts",
+      "color": "Blue",
+      "brand": "ClassicChic",
+      "price": 49.99
+    },
+    {
+      "name": "Smart Formal Watch",
+      "type": "Watches",
+      "color": "Silver",
+      "brand": "TimeMaster",
+      "price": 199.99
+    },
+    {
+      "name": "Summer Striped Tank Top",
+      "type": "Tank Tops",
+      "color": "Blue-White",
+      "brand": "SummerVibes",
+      "price": 19.99
+    },
+    {
+      "name": "Rugged Work Boots",
+      "type": "Boots",
+      "color": "Brown",
+      "brand": "WorkWear",
+      "price": 129.5
+    },
+    {
+      "name": "Stylish Pleated Skirt",
+      "type": "Skirts",
+      "color": "Black",
+      "brand": "FashionFusion",
+      "price": 79.99
+    },
+    {
+      "name": "Fancy Leather Belt",
+      "type": "Belts",
+      "color": "Brown",
+      "brand": "LuxuryLeather",
+      "price": 49.5
+    },
+    {
+      "name": "Retro Suede Jacket",
+      "type": "Jackets",
+      "color": "Brown",
+      "brand": "RetroStyle",
+      "price": 199.99
+    },
+    {
+      "name": "Minimalist Chain Necklace",
+      "type": "Jewelry",
+      "color": "Gold",
+      "brand": "ChicAccessories",
+      "price": 89.99
+    },
+    {
+      "name": "Patterned Silk Tie",
+      "type": "Ties",
+      "color": "Blue-White",
+      "brand": "ClassicTies",
+      "price": 34.99
+    }
+  ]
+}
