@@ -1,23 +1,15 @@
-const cardTemplate = document.querySelector("[data-user-template]");
-console.log(cardTemplate);
-const clonedContent = cardTemplate.cloneNode(true);
-console.log(clonedContent);
+const gameArea = document.querySelector(".game-area");
+const fetchData = async () => {
+  const response = await fetch("http://www.boredapi.com/api/activity/");
+  const data = await response.json();
+  return data;
+};
+const renderData = async () => {
+  const newActivity = await fetchData();
+  console.log(newActivity);
 
-async function fetchData(url) {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      console.log("Response not ok");
-    }
-    const jsonData = await response.json();
-    console.log(jsonData);
-    return jsonData;
-  } catch (error) {
-    console.error("error", error);
-    throw new error();
+  for (let x in newActivity) {
+    gameArea.innerHTML += x;
   }
-}
-async function processData() {
-  const data = await fetchData("https://jsonplaceholder.typicode.com/users");
-}
-processData();
+};
+renderData();
